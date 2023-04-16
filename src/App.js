@@ -1,24 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
+import { Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Main from './components/Main';
+import Services from './components/Services';
+import Profile from './components/Profile';
+import Maintance from './components/Maintance';
+import Washing from './components/Washing';
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/services" element={<Services />}>
+
+          <Route path="maintanance" element={<Maintance />} />
+          <Route path="washing" element={<Washing />} />
+          <Route path="kchbhi" element={<Main />} />
+        </Route>
+        <Route path="/profile/:name" element={<Profile />} />
+        <Route path="*" element={(<h1>Error 404</h1>)} />
+      </Routes>
+
+    </>
   );
 }
 
